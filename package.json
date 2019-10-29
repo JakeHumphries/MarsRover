@@ -1,0 +1,29 @@
+{
+  "name": "marsrover",
+  "version": "1.0.0",
+  "description": "Mars Rover Problem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon moveRover.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NandosJake/MarsRover.git"
+  },
+  "author": "Jake Humphries",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NandosJake/MarsRover/issues"
+  },
+  "homepage": "https://github.com/NandosJake/MarsRover#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2"
+  }
+}
