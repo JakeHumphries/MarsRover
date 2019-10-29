@@ -4,9 +4,8 @@ const moveRover = require('../../application/use_cases/moveRover');
 router.get('/getfinalCoordinates', (req, res) => {
   const { startingPosition } = req.query;
   const { moveInstructions } = req.query;
-  const moveInstructionArray = moveInstructions.split('');
-  const startingPositionArray = startingPosition.split('');
-  const finalCoordinates = moveRover(startingPositionArray, moveInstructionArray);
+  const { gridSize } = req.query;
+  const finalCoordinates = moveRover(startingPosition, moveInstructions, gridSize);
 
   res.json(
     `You're final Direction is ${finalCoordinates.currentDir} and you're final position is ${finalCoordinates.currentX},${finalCoordinates.currentY}`,
@@ -14,3 +13,5 @@ router.get('/getfinalCoordinates', (req, res) => {
 });
 
 module.exports = router;
+
+
