@@ -2,7 +2,7 @@
 
 const testGridInput = 55;
 const testStartingPosition = '12N';
-const testMoveDirection = 'LMMR';
+const testMoveDirection = 'RMLMRMMLLM';
 
 const checkDirection = (currentDir, rotation) => {
   if (currentDir === 'N' && rotation === 'L') {
@@ -32,27 +32,46 @@ const checkDirection = (currentDir, rotation) => {
   throw new Error('Initial Direction or rotation is incorrect');
 };
 
-const newXY = (currentDir, currentX, currentY) => {
+const newCoordinates = (currentDir, currentX, currentY) => {
   if (currentDir === 'N') {
-
+    currentY += 1;
+    return { currentDir, currentX, currentY };
   }
-}
+  if (currentDir === 'E') {
+    currentX += 1;
+    return { currentDir, currentX, currentY };
+  }
+  if (currentDir === 'S') {
+    currentY -= 1;
+    return { currentDir, currentX, currentY };
+  }
+  if (currentDir === 'W') {
+    currentX -= 1;
+    return { currentDir, currentX, currentY };
+  }
+  throw new Error('current direction is incorrect');
+};
 
 const moveDirArray = testMoveDirection.split('');
 const currentPosition = testStartingPosition.split('');
 
 const moveRover = (initialPosition, moveDirections) => {
   // go from 1,2 N to L M
-  const currentX = currentPosition[0];
-  const currentY = currentPosition[1];
+  const currentX = parseInt(currentPosition[0], 10);
+  const currentY = parseInt(currentPosition[1], 10);
   let currentDir = currentPosition[2];
+  let finalCoordinates = { currentDir, currentX, currentY };
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < moveDirections.length; i++) {
     if (moveDirections[i] === 'L' || moveDirections[i] === 'R') {
       currentDir = checkDirection(currentDir, moveDirections[i]);
     }
-    if (moveDirections[i] === 'M') {}
+    if (moveDirections[i] === 'M') {
+      finalCoordinates = newCoordinates(currentDir, finalCoordinates.currentX, finalCoordinates.currentY);
+    }
   }
+  return finalCoordinates;
 };
 
-moveRover(currentPosition, moveDirArray);
+const finalCoordinates = moveRover(currentPosition, moveDirArray);
+console.log(finalCoordinates);
