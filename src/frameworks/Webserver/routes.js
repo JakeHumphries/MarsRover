@@ -1,17 +1,14 @@
 const router = require('express').Router();
-const moveRover = require('../../application/use_cases/moveRover');
+const dropRover = require('../../application/use_cases/dropRover');
 
-router.get('/getfinalCoordinates', (req, res) => {
-  const { startingPosition } = req.query;
-  const { moveInstructions } = req.query;
-  const { gridSize } = req.query;
-  const finalCoordinates = moveRover(startingPosition, moveInstructions, gridSize);
+global.globalobject = [];
 
-  res.json(
-    `You're final Direction is ${finalCoordinates.currentDir} and you're final position is ${finalCoordinates.currentX},${finalCoordinates.currentY}`,
-  );
+router.get('/createRover', (req, res) => {
+  const { roverID } = req.query;
+  const { startingX } = req.query;
+  const { startingY } = req.query;
+  const { startingDir } = req.query;
+  dropRover(roverID, startingX, startingY, startingDir);
 });
 
 module.exports = router;
-
-

@@ -3,7 +3,6 @@ const routes = require('./routes');
 
 const createServer = async ({ config: { port } }) => {
   const server = express();
-
   server.use('/marsRover', routes);
   server.listen(port, error => {
     if (error) {
