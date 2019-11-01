@@ -1,23 +1,14 @@
 const Rover = require('../../enterprise/entities/Rover');
+const validate = require('./utils/validate');
 
 global.activeRovers = [];
 
-const CheckRoverDetails = (roverID, startingX, startingY) => {
-  activeRovers.forEach(element => {
-    if (roverID === element.id) {
-      throw new Error('RoverID already exists');
-    }
-    if (startingX === element.startingX && startingY === element.startingY) {
-      throw new Error('Rover already exists on starting position');
-    }
-  });
-  //check if the rover is within the grid
-};
+const gridSize = '5x5';
+const gridObj = { x: parseInt(gridSize.charAt(0), 10), y: parseInt(gridSize.charAt(2), 10) };
 
 module.exports = (roverID, startingX, startingY, startingDir) => {
-  //check if grid exists
-  CheckRoverDetails(roverID, startingX, startingY);
+  // check if grid exists
+  validate.checkRoverDetails(roverID, startingX, startingY, gridObj);
   activeRovers.push(new Rover(roverID, startingX, startingY, startingDir));
   console.log(activeRovers);
 };
- 

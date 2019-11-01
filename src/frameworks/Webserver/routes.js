@@ -9,6 +9,7 @@ router.get('/createRover', (req, res) => {
   const { startingY } = req.query;
   const { startingDir } = req.query;
   dropRover(roverID, startingX, startingY, startingDir);
+  res.json(`Succesfully dropped rover ${roverID} at position ${startingX},${startingY},${startingDir}`);
 });
 
 module.exports = router;
