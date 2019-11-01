@@ -1,5 +1,6 @@
 const validate = require('../validate');
 const ActiveRovers = require('../../../../enterprise/entities/ActiveRovers');
+
 jest.mock('../../../../enterprise/entities/ActiveRovers');
 
 describe('checkRoverDetails', () => {
@@ -44,5 +45,12 @@ describe('checkRoverDetails', () => {
       expect(e.message).toBe('RoverID already exists');
     }
   });
-  it('should error if the input starting co ordinates already have a rover on them', () => {});
+  it('should error if the input starting co ordinates already have a rover on them', () => {
+    ActiveRovers.getRovers = jest.fn(() => [{ startingX: 1, startingY: 2 }]);
+    try {
+      validate.checkRoverDetails(3, 1, 2, {});
+    } catch (e) {
+      expect(e.message).toBe('Rover already exists on starting position');
+    }
+  });
 });
