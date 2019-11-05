@@ -3,8 +3,6 @@ const dropRover = require('../../application/use_cases/dropRover');
 const clearRovers = require('../../application/use_cases/clearRovers');
 const moveRover = require('../../application/use_cases/moveRover');
 
-global.globalobject = [];
-
 router.get('/createRover', (req, res) => {
   const roverID = parseInt(req.query.roverID, 10);
   const { startingX } = req.query;
