@@ -1,8 +1,8 @@
 module.exports = class {
-  constructor(id, startingX, startingY, startingDir) {
-    this.id = id;
-    this.startingX = startingX;
-    this.startingY = startingY;
-    this.startingDir = startingDir;
+  constructor(id, currentX, currentY, currentDir) {
+    this.id = parseInt(id, 10);
+    this.currentX = parseInt(currentX, 10);
+    this.currentY = parseInt(currentY, 10);
+    this.currentDir = currentDir;
   }
 };
