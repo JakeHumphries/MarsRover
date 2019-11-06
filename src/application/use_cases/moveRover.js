@@ -1,16 +1,16 @@
-const ActiveRovers = require('../../enterprise/entities/ActiveRovers');
 const getDirection = require('./utils/getDirection');
 const getNextCoordinate = require('./utils/getNextCoordinate');
 const validate = require('./utils/validate');
+const grid = require('../../enterprise/entities/grid');
+const ActiveRovers = require('../../enterprise/entities/ActiveRovers');
 
-const gridSize = '5x5';
-const gridObj = { x: parseInt(gridSize.charAt(0), 10), y: parseInt(gridSize.charAt(2), 10) };
+const activeRovers = new ActiveRovers();
 
 module.exports = (roverId, moveInstructions) => {
-  if (!ActiveRovers.getRoverById(roverId)) {
+  if (!activeRovers.getRoverById(roverId)) {
     throw new Error(`roverID ${roverId} doesnt exist`);
   }
-  let currentRover = ActiveRovers.getRoverById(roverId);
+  let currentRover = activeRovers.getRoverById(roverId);
   const moveInstructionArr = moveInstructions.split('');
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < moveInstructionArr.length; i++) {
@@ -19,9 +19,9 @@ module.exports = (roverId, moveInstructions) => {
     }
     if (moveInstructionArr[i] === 'M') {
       currentRover = getNextCoordinate(currentRover);
-      validate.checkRoute(currentRover.currentX, currentRover.currentY, gridObj);
+      validate.checkRoute(currentRover.currentX, currentRover.currentY, grid);
     }
   }
-  ActiveRovers.updateRover(currentRover);
+  activeRovers.updateRover(currentRover);
   return currentRover;
 };

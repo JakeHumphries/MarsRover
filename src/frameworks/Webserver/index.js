@@ -8,7 +8,6 @@ const createServer = async ({ config: { port } }) => {
     if (error) {
       throw new Error(error);
     }
-
     // eslint-disable-next-line no-console
     console.log(`Server listening on port: ${port}`);
   });

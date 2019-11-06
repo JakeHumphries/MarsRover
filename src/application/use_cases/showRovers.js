@@ -3,5 +3,8 @@ const ActiveRovers = require('../../enterprise/entities/ActiveRovers');
 const activeRovers = new ActiveRovers();
 
 module.exports = () => {
-  activeRovers.arr = [];
+  if (activeRovers.arr.length < 1) {
+    throw new Error('No rovers on the grid');
+  }
+  return activeRovers.arr;
 };

@@ -1,21 +1,26 @@
-let activeRovers = [];
+class ActiveRovers {
+  constructor() {
+    if (ActiveRovers.instance) {
+      return ActiveRovers.instance;
+    }
 
-const ActiveRovers = {
-  addRover: rover => activeRovers.push(rover),
-  getRovers: () => activeRovers,
-  getRoverById: roverID => {
-    const currentRover = activeRovers.find(activeRoversArr => activeRoversArr.id === roverID);
-    return currentRover;
-  },
-  removeRovers: () => {
-    activeRovers = [];
-  },
-  updateRover: rover => {
-    const index = activeRovers.findIndex(activeRoversArr => activeRoversArr.id === rover.id);
-    activeRovers[index] = rover;
-  },
-};
+    ActiveRovers.instance = this;
+    this.arr = [];
+    this.currentRover = {};
+    this.index = 0;
 
-Object.freeze(ActiveRovers);
+    return this;
+  }
+
+  getRoverById(roverID) {
+    this.currentRover = this.arr.find(activeRoversArr => activeRoversArr.id === roverID);
+    return this.currentRover;
+  }
+
+  updateRover(rover) {
+    this.index = this.arr.findIndex(activeRoversArr => activeRoversArr.id === rover.id);
+    this.arr[this.index] = rover;
+  }
+}
 
 module.exports = ActiveRovers;
