@@ -8,5 +8,4 @@ const activeRovers = new ActiveRovers();
 module.exports = (roverID, currentX, currentY, currentDir) => {
   validate.checkRoverDetails(roverID, currentX, currentY, grid);
   activeRovers.arr.push(new Rover(roverID, currentX, currentY, currentDir));
-  console.log(activeRovers.arr);
 };
