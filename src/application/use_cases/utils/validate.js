@@ -9,7 +9,6 @@ exports.checkRoverDetails = (roverID, startingX, startingY, grid) => {
   startingX = parseInt(startingX, 10);
   startingY = parseInt(startingY, 10);
   if (startingX > grid.gridX || startingY > grid.gridY) {
-    console.log(grid);
     throw new Error('Rover would be outside the bounds of the grid');
   }
 

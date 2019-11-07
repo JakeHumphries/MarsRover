@@ -16,7 +16,6 @@ describe('moveRover', () => {
     const expectedArr = [{ id: 8, currentX: 1, currentY: 2, currentDir: 'N' }];
     activeRovers.arr.push(new Rover(8, 1, 2, 'N'));
     const arr = showRovers();
-    console.log(arr);
     expect(arr).toEqual(expectedArr);
   });
 });

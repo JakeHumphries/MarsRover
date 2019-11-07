@@ -10,5 +10,4 @@ module.exports = (gridX, gridY) => {
   activeRovers.arr = [];
   grid.gridX = parseInt(gridX, 10);
   grid.gridY = parseInt(gridY, 10);
-  console.log(gridX, gridY, grid);
 };
