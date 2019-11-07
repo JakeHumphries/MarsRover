@@ -6,11 +6,32 @@ const grid = require('../../../enterprise/entities/grid');
 const activeRovers = new ActiveRovers();
 
 describe('updateGrid', () => {
-  it('Should error if grid coordinates are not integers', () => {
+  it('Should error if grid coordinate X is not a integer', () => {
     try {
       updateGrid('notInt', '2');
     } catch (e) {
       expect(e.message).toBe('Grid coordinates are not integers');
+    }
+  });
+  it('Should error if grid coordinate Y is not a integer', () => {
+    try {
+      updateGrid('1', 'notInt');
+    } catch (e) {
+      expect(e.message).toBe('Grid coordinates are not integers');
+    }
+  });
+  it('Should error if grid coordinate X is a minus number', () => {
+    try {
+      updateGrid('-10', '2');
+    } catch (e) {
+      expect(e.message).toBe('Grid coordinates cannot be minus');
+    }
+  });
+  it('Should error if grid coordinate Y is a minus number', () => {
+    try {
+      updateGrid('10', '-10');
+    } catch (e) {
+      expect(e.message).toBe('Grid coordinates cannot be minus');
     }
   });
   it('Should set the activeRovers arr to be empty', () => {

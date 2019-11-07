@@ -3,12 +3,15 @@ const ActiveRovers = require('../../../enterprise/entities/ActiveRovers');
 const activeRovers = new ActiveRovers();
 
 exports.checkRoverDetails = (roverID, startingX, startingY, grid) => {
-  if (!parseInt(startingX, 10) || !parseInt(startingY, 10)) {
+  if (
+    (!parseInt(startingX, 10) && parseInt(startingX, 10) !== 0) ||
+    (!parseInt(startingY, 10) && parseInt(startingY, 10) !== 0)
+  ) {
     throw new Error('Rover starting co ordinates are not integers');
   }
   startingX = parseInt(startingX, 10);
   startingY = parseInt(startingY, 10);
-  if (startingX > grid.gridX || startingY > grid.gridY) {
+  if (startingX > grid.gridX || startingY > grid.gridY || startingX < 0 || startingY < 0) {
     throw new Error('Rover would be outside the bounds of the grid');
   }
 
@@ -23,7 +26,7 @@ exports.checkRoverDetails = (roverID, startingX, startingY, grid) => {
 };
 
 exports.checkRoute = (x, y, gridSize) => {
-  if (x > gridSize.gridX || y > gridSize.gridY) {
+  if (x > gridSize.gridX || y > gridSize.gridY || x < 0 || y < 0) {
     throw new Error('Rover would leave grid! enter new move instructions');
   }
   activeRovers.arr.forEach(element => {

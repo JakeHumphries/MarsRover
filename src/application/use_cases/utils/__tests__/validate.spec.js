@@ -27,10 +27,26 @@ describe('checkRoverDetails', () => {
       expect(e.message).toBe('Rover would be outside the bounds of the grid');
     }
   });
+  it('should error if the X input co ordinate would result in a minus number', () => {
+    const testGrid = { x: 5, y: 5 };
+    try {
+      validate.checkRoverDetails(1, -1, 1, testGrid);
+    } catch (e) {
+      expect(e.message).toBe('Rover would be outside the bounds of the grid');
+    }
+  });
   it('should error if the Y input co ordinate is not within the grid', () => {
     const testGrid = { x: 5, y: 5 };
     try {
       validate.checkRoverDetails(1, 1, 6, testGrid);
+    } catch (e) {
+      expect(e.message).toBe('Rover would be outside the bounds of the grid');
+    }
+  });
+  it('should error if the Y input co ordinate would result in a minus number', () => {
+    const testGrid = { x: 5, y: 5 };
+    try {
+      validate.checkRoverDetails(1, 1, -1, testGrid);
     } catch (e) {
       expect(e.message).toBe('Rover would be outside the bounds of the grid');
     }
@@ -57,6 +73,13 @@ describe('checkRoute', () => {
   it('should error if the rover would leave the grid', () => {
     try {
       validate.checkRoute(10, 10, { gridX: 1, gridY: 1 });
+    } catch (e) {
+      expect(e.message).toBe('Rover would leave grid! enter new move instructions');
+    }
+  });
+  it('should error if the rovers new co ordinates are minus numbers', () => {
+    try {
+      validate.checkRoute(10, 10, { gridX: -1, gridY: 1 });
     } catch (e) {
       expect(e.message).toBe('Rover would leave grid! enter new move instructions');
     }

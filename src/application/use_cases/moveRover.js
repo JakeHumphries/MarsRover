@@ -10,6 +10,9 @@ module.exports = (roverId, moveInstructions) => {
   if (!activeRovers.getRoverById(roverId)) {
     throw new Error(`roverID ${roverId} doesnt exist`);
   }
+  if (!moveInstructions || parseInt(moveInstructions, 10)) {
+    throw new Error(`Move instructions are incorrect`);
+  }
   let currentRover = activeRovers.getRoverById(roverId);
   const moveInstructionArr = moveInstructions.split('');
   // eslint-disable-next-line no-plusplus
