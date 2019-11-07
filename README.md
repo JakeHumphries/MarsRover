@@ -12,18 +12,23 @@ Assume that the square directly North from (x, y) is (x, y+1).
 ## Getting Started
 
 To Drop a rover on the grid call drop rover endpoint. 
+
 example: http://localhost:3000/marsRover/createRover?roverID=1&startingX=1&startingY=1&startingDir=N
 
 To move a rover that is currently on the grid call move rover endpoint.
+
 example: http://localhost:3000/marsRover/moveRover?roverID=1&moveInstructions=LMMRM
 
 To clear all rovers off of the grid call the clear rovers endpoint.
+
 example: http://localhost:3000/marsRover/clearRovers
 
 To show all rovers curently on the grid call the show rovers endpoint.
+
 example: http://localhost:3000/marsRover/showRovers
 
 To update the grid size call the update grid endpoint (default is 5x5).
+
 example: http://localhost:3000/marsRover/updateGrid?gridX=10&gridY=10
 
 There is more documentation! please ask Jake Humphries for more details. 
@@ -55,6 +60,7 @@ CI - github actions
 - on push
 - builds app in ubuntu with node version 8,9,10
 - runs tests
+
 CD - tbc 
 
 ## Authors
