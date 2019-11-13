@@ -2,8 +2,9 @@
   "name": "marsrover",
   "version": "1.0.0",
   "description": "Mars Rover Problem",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
+    "dev": "nodemon --inspect",
     "test": "jest --coverage",
     "start": "nodemon droprover.js"
   },

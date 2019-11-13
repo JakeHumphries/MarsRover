@@ -1,4 +1,4 @@
-const createServer = require('./src/frameworks/Webserver/index');
+const createServer = require('./frameworks/Webserver/index');
 const config = require('./config');
 
 const start = async () => {

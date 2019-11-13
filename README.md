@@ -17,7 +17,7 @@ example: http://localhost:3000/marsRover/createRover?roverID=1&startingX=1&start
 
 To move a rover that is currently on the grid call move rover endpoint.
 
-example: http://localhost:3000/marsRover/moveRover?roverID=1&moveInstructions=LMMRM
+example: http://localhost:3000/marsRover/moveRover?roverID=1&moveInstructions=LM
 
 To clear all rovers off of the grid call the clear rovers endpoint.
 

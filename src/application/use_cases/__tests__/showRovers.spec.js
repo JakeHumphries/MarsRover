@@ -5,7 +5,7 @@ const Rover = require('../../../enterprise/entities/Rover');
 const activeRovers = new ActiveRovers();
 
 describe('moveRover', () => {
-  it('Should error if there are now rovers on the grid', () => {
+  it('Should error if there are no rovers on the grid', () => {
     try {
       showRovers();
     } catch (e) {
