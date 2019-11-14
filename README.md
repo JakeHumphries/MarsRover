@@ -11,13 +11,15 @@ Assume that the square directly North from (x, y) is (x, y+1).
 
 ## Getting Started
 
+You will need to create a .env file with a INFRASTRUCTURE_WEBSERVER_PORT key for the application to run! 
+
 To Drop a rover on the grid call drop rover endpoint. 
 
 example: http://localhost:3000/marsRover/createRover?roverID=1&startingX=1&startingY=1&startingDir=N
 
 To move a rover that is currently on the grid call move rover endpoint.
 
-example: http://localhost:3000/marsRover/moveRover?roverID=1&moveInstructions=LM
+example: http://localhost:3000/marsRover/moveRover?roverID=1&moveInstructions=RM
 
 To clear all rovers off of the grid call the clear rovers endpoint.
 
