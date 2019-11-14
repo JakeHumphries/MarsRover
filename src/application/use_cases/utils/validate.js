@@ -5,7 +5,9 @@ const activeRovers = new ActiveRovers();
 exports.checkRoverDetails = (roverID, startingX, startingY, grid) => {
   if (
     (!parseInt(startingX, 10) && parseInt(startingX, 10) !== 0) ||
-    (!parseInt(startingY, 10) && parseInt(startingY, 10) !== 0)
+    (!parseInt(startingY, 10) && parseInt(startingY, 10) !== 0) ||
+    startingX.indexOf('.') !== -1 ||
+    startingY.indexOf('.') !== -1
   ) {
     throw new Error('Rover starting co ordinates are not integers');
   }
@@ -35,4 +37,34 @@ exports.checkRoute = (x, y, gridSize) => {
       throw new Error(`Rover already exists on the route at position ${x},${y}`);
     }
   });
+};
+
+exports.checkMoveRover = roverId => {
+  if (!activeRovers.getRoverById(roverId)) {
+    throw new Error(`roverID ${roverId} doesnt exist`);
+  }
+};
+
+exports.checkMoveInstructions = (moveInstructionArr, i) => {
+  if (!moveInstructionArr[i] || parseInt(moveInstructionArr[i], 10)) {
+    throw new Error(`Move instructions are incorrect`);
+  }
+  if (moveInstructionArr[i] !== 'L' && moveInstructionArr[i] !== 'R' && moveInstructionArr[i] !== 'M') {
+    throw new Error('Move instruction must be L R or M');
+  }
+};
+
+exports.checkRoversOnGrid = () => {
+  if (activeRovers.arr.length < 1) {
+    throw new Error('No rovers on the grid');
+  }
+};
+
+exports.checkGridCoordinates = (gridX, gridY) => {
+  if (!parseInt(gridX, 10) || !parseInt(gridY, 10) || gridX.indexOf('.') !== -1 || gridY.indexOf('.') !== -1) {
+    throw new Error('Grid coordinates are not integers');
+  }
+  if (parseInt(gridX, 10) < 0 || parseInt(gridY, 10) < 0) {
+    throw new Error('Grid coordinates cannot be minus');
+  }
 };

@@ -1,10 +1,9 @@
 const ActiveRovers = require('../../enterprise/entities/ActiveRovers');
+const validate = require('./utils/validate');
 
 const activeRovers = new ActiveRovers();
 
 module.exports = () => {
-  if (activeRovers.arr.length < 1) {
-    throw new Error('No rovers on the grid');
-  }
+  validate.checkRoversOnGrid();
   return activeRovers.arr;
 };
