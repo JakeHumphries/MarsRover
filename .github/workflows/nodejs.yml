@@ -26,4 +26,4 @@ jobs:
         CI: true
     - uses: actions/checkout@v1
     - name: Build the docker image 
-      run: docker build . --file Dockerfile --tag jakeh/MarsRover
+      run: docker build . --file Dockerfile --tag marsrover
