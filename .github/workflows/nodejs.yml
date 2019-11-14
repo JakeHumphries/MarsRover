@@ -27,7 +27,3 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the docker image 
       run: docker build . --file Dockerfile --tag marsrover
-    - name: Login to Docker hub 
-      run: docker login --username "nandosjakeh" --password "Slamwtbeirir95"
-    - name: push the Docker image
-      run: docker push marsrover
