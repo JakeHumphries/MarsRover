@@ -30,4 +30,4 @@ jobs:
     - name: Login to Docker hub 
       run: docker login --username "nandosjakeh" --password "Slamwtbeirir95"
     - name: push the Docker image
-      run: docker push marsrover
+      run: docker push nandosjakeh/marsrover
