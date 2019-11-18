@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mars-rover
-        image: eu.gcr.io/marsrover-259016/cloud-run-github-actions
+        image: nandosjakeh/marsrover
         resources:
           requests:
             cpu: 100m
