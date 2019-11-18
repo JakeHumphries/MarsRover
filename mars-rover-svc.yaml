@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-    targetPort: 5000
+    targetPort: 4000
     nodePort: 30000
   selector:
     name: mars-rover-svc
