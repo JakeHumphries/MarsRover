@@ -28,4 +28,4 @@ spec:
         - name: SESSION_REDIS
           value: "true"
         ports:
-        - containerPort: 4000
+        - containerPort: 5000
