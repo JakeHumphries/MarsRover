@@ -44,9 +44,3 @@ jobs:
       with:
         entrypoint: sh
         args: -c "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}"
-    
-    - name: Login to Docker hub 
-      run: docker login --username "nandosjakeh" --password "Slamwtbeirir95"
-      
-    - name: push the Docker image
-      run: docker push nandosjakeh/marsrover
