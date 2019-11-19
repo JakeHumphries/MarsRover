@@ -2,6 +2,12 @@ name: Node CI
 
 on: [push]
 
+env:
+  GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+  GCLOUD_APP_NAME: ${{ secrets.GCLOUD_APP_NAME }}
+  GCLOUD_ZONE: europe-west1-b
+  GCLOUD_CLUSTER: gke_marsrover-259016_europe-west1-b_mars-rover
+
 jobs:
   build:
 
@@ -27,7 +33,7 @@ jobs:
     - uses: actions/checkout@v1
       
     - name: Build the docker image 
-      run: docker build . --file Dockerfile --tag eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
+      run: docker build . --file Dockerfile --tag eu.gcr.io/$GCLOUD_PROJECT/$GCLOUD_APP_NAME
       
     - name: Authenticate into Google Cloud Platform
       uses: actions/gcloud/auth@master
@@ -43,4 +49,16 @@ jobs:
       uses: actions/gcloud/cli@master
       with:
         entrypoint: sh
-        args: -c "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}"
+        args: -c "docker push eu.gcr.io/$GCLOUD_PROJECT/$GCLOUD_APP_NAME"
+
+    - name: Set up Kustomize
+      run: |
+        curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+        chmod u+x ./kustomize
+
+    - name: Deploy image to GCLOUD cluster
+      run: |
+        gcloud container clusters get-credentials $GCLOUD_CLUSTER --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
+        ./kustomize edit set image gcr.io/$GCLOUD_PROJECT/$GCLOUD_APP_NAME
+        ./kustomize build . | kubectl apply -f -
+        kubectl get services -o wide
