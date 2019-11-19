@@ -1,4 +1,4 @@
 resources:
-- mars-rover-ns.yaml
-- mars-rover-svc.yaml
-- mars-rover-dep.yaml
+- mars-rover-prod-ns.yaml
+- mars-rover-prod-svc.yaml
+- mars-rover-prod-dep.yaml
