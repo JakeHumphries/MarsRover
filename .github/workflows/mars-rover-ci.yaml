@@ -1,14 +1,4 @@
-# This workflow will build a docker container, publish it to Google Container Registry, and deploy it to GKE.
-#
-# To configure this workflow:
-#
-# 1. Ensure that your repository contains the necessary configuration for your Google Kubernetes Engine cluster, including deployment.yml, kustomization.yml, service.yml, etc.
-#
-# 2. Set up secrets in your workspace: GCLOUD_PROJECT with the name of the project, GCLOUD_EMAIL with the service account email, GCLOUD_KEY with the service account key.
-#
-# 3. Change the values for the GCLOUD_ZONE, GCLOUD_CLUSTER and IMAGE environment variables (below).
-
-name: Build and Deploy to GKE
+name: CI-CD GKE workflow
 
 on:
   push:
@@ -25,6 +15,28 @@ env:
   IMAGE: mars-rover-image
 
 jobs:
+  build-tests:
+    name: build-tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build --if-present
+        npm test
+      env:
+        CI: true
+        
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
