@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mars-rover
-  namespace: mars-rover-ns
+  name: mars-rover-test
+  namespace: mars-rover-test-ns
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: mars-rover
+      name: mars-rover-test
       version: 0.2.0
   template:
     metadata:
       labels:
-        name: mars-rover
+        name: mars-rover-test
         version: 0.2.0
     spec:
       containers:
-      - name: mars-rover
-        image: gcr.io/marsrover-259016/mars-rover-image
+      - name: mars-rover-test
+        image: gcr.io/marsrover-259016/mars-rover-test-image
         resources:
           requests:
             cpu: 100m
