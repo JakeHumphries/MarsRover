@@ -64,7 +64,7 @@ jobs:
         docker build https://github.com/NandosJake/MarsRover.git#test -t gcr.io/test/"$GCLOUD_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
 
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" .
+          --build-arg GITHUB_REF="$GITHUB_REF" https://github.com/NandosJake/MarsRover.git#test
 
     # Push the Docker image to Google Container Registry
     - name: Publish
