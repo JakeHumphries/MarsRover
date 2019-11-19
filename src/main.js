@@ -6,4 +6,3 @@ const start = async () => {
 };
 
 start();
-// test
