@@ -14,9 +14,9 @@ RUN npm install
 # second stage: move built deps and code to final container
 FROM node:11.15.0-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 COPY --from=build node_modules node_modules
 
 COPY . .
-
+EXPOSE 5000
 CMD [ "npm", "start" ]
