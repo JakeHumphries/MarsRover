@@ -21,7 +21,7 @@ env:
   GCLOUD_EMAIL: ${{ secrets.GCLOUD_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GCLOUD_ZONE: europe-west1-b
-  GCLOUD_CLUSTER: gke_marsrover-259016_europe-west1-b_mars-rover
+  GCLOUD_CLUSTER: mars-rover
   IMAGE: mars-rover-image
 
 jobs:
@@ -70,5 +70,4 @@ jobs:
         gcloud container clusters get-credentials $GCLOUD_CLUSTER --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
         ./kustomize edit set image gcr.io/$GCLOUD_PROJECT/$IMAGE:${GITHUB_SHA}
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$IMAGE
         kubectl get services -o wide
