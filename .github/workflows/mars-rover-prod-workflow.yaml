@@ -1,4 +1,4 @@
-name: CI-CD GKE workflow
+name: Production CI-CD GKE workflow
 
 on:
   push:
