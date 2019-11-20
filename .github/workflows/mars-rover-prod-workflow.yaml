@@ -82,5 +82,5 @@ jobs:
         gcloud container clusters get-credentials $GCLOUD_CLUSTER --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
         ./kustomize edit set image gcr.io/$GCLOUD_PROJECT/$IMAGE:${GITHUB_SHA}
         pwd
-        ./kustomize build ../MarsRover/deployment/overlays/production | kubectl apply -f -
+        ./kustomize build ../deployment/overlays/production | kubectl apply -f -
         kubectl get services -o wide
