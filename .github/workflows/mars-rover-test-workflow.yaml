@@ -78,8 +78,6 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GCLOUD_CLUSTER --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
-        ./kustomize edit set image gcr.io/$GCLOUD_PROJECT/$IMAGE:$GITHUB_SHA
-        kubectl apply -f mars-rover-test-ns.yaml
-        kubectl apply -f mars-rover-test-svc.yaml
-        kubectl apply -f mars-rover-test-dep.yaml
+        ./kustomize edit set image gcr.io/$GCLOUD_PROJECT/$IMAGE:${GITHUB_SHA}
+        ./kustomize build ./deployment/overlays/development | kubectl apply -f -
         kubectl get services -o wide
