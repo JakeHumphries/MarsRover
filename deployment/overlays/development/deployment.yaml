@@ -9,4 +9,3 @@ spec:
       containers:
       - image: gcr.io/marsrover-259016/mars-rover-test-image
         name: mars-rover-con # necessary for Kustomize identification
-        namespace: mars-rover-ns
