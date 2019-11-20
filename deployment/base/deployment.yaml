@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mars-rover
+  name: mars-rover-1
   namespace: mars-rover-ns
 spec:
   replicas: 1
@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        name: mars-rover-meta
+        name: mars-rover
         version: 0.2.0
     spec:
       containers:
