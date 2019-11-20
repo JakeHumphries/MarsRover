@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app # necessary for Kustomize identification
+  namespace: mars-rover-ns
 spec:
   template:
     spec:
       containers:
       - image: gcr.io/marsrover-259016/mars-rover-test-image
         name: mars-rover-con # necessary for Kustomize identification
+        namespace: mars-rover-ns
