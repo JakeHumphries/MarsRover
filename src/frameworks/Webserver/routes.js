@@ -16,7 +16,7 @@ router.get('/createRover', (req, res) => {
 
 router.get('/clearRovers', (req, res) => {
   clearRovers();
-  res.json('Succesfully cleared rovers from grid - YOU ARE IN TESTING');
+  res.json('Succesfully cleared rovers from grid - YOU ARE IN TESTING WOO');
 });
 
 router.get('/moveRover', (req, res) => {
