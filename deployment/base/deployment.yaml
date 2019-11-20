@@ -13,11 +13,11 @@ spec:
   template:
     metadata:
       labels:
-        name: mars-rover
+        name: mars-rover-meta
         version: 0.2.0
     spec:
       containers:
-      - name: mars-rover
+      - name: mars-rover-con
         image: XXX
         resources:
           requests:
