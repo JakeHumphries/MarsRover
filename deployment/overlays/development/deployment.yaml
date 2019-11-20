@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mars-rover-1 # necessary for Kustomize identification
+  name: app # necessary for Kustomize identification
 spec:
   template:
     spec:
