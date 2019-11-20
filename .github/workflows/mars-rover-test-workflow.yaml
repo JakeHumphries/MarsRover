@@ -61,14 +61,15 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |        
-        docker build https://github.com/NandosJake/MarsRover/test -t gcr.io/test/"$GCLOUD_PROJECT"/"$IMAGE" \
+        docker build https://github.com/NandosJake/MarsRover.git#test -t gcr.io/"$GCLOUD_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" .
+          --build-arg GITHUB_REF="$GITHUB_REF" https://github.com/NandosJake/MarsRover.git#test
 
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
-        docker push gcr.io/$GCLOUD_PROJECT/$IMAGE
+        docker push gcr.io/$GCLOUD_PROJECT/$IMAGE:$GITHUB_SHA
         
     # Set up kustomize
     - name: Set up Kustomize
