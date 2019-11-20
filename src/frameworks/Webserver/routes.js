@@ -11,12 +11,12 @@ router.get('/createRover', (req, res) => {
   const { startingY } = req.query;
   const { startingDir } = req.query;
   dropRover(roverID, startingX, startingY, startingDir);
-  res.json(`Succesfully dropped rover ${roverID} at position ${startingX},${startingY},${startingDir}`);
+  res.json(`Succesfully dropped rover ${roverID} at position ${startingX},${startingY},${startingDir} `);
 });
 
 router.get('/clearRovers', (req, res) => {
   clearRovers();
-  res.json('Succesfully cleared rovers from grid - YOU ARE IN TESTING');
+  res.json('Succesfully cleared rovers from grid');
 });
 
 router.get('/moveRover', (req, res) => {
