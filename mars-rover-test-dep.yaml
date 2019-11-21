@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mars-rover-test
-        image: gcr.io/marsrover-259016/mars-rover-test-image:latest
+        image: gcr.io/marsrover-259016/mars-rover-test-image
         resources:
           requests:
             cpu: 100m
