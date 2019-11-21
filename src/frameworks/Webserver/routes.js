@@ -11,7 +11,7 @@ router.get('/createRover', (req, res) => {
   const { startingY } = req.query;
   const { startingDir } = req.query;
   dropRover(roverID, startingX, startingY, startingDir);
-  res.json(`Succesfully dropped rover ${roverID} at position ${startingX},${startingY},${startingDir} this is a massive change 1`);
+  res.json(`Succesfully dropped rover ${roverID} at position ${startingX},${startingY},${startingDir} this is a massive change 1000`);
 });
 
 router.get('/clearRovers', (req, res) => {
