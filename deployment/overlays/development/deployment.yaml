@@ -7,5 +7,5 @@ spec:
   template:
     spec:
       containers:
-      - image: gcr.io/marsrover-259016/mars-rover-test-image
+      - image: gcr.io/marsrover-259016/mars-rover-test-image:latest
         name: mars-rover-con # necessary for Kustomize identification
