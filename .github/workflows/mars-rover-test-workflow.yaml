@@ -11,8 +11,8 @@ env:
   GCLOUD_EMAIL: ${{ secrets.GCLOUD_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GCLOUD_ZONE: europe-west1-b
-  GCLOUD_CLUSTER: mars-rover-dev
-  IMAGE: mars-rover-test-image
+  GCLOUD_CLUSTER: development
+  IMAGE: mars-rover-dev-image
 
 jobs:
   build-tests:
