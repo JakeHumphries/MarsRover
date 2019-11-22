@@ -1,4 +1,4 @@
-name: Test CI-CD GKE workflow
+name: Dev CI-CD GKE workflow
 
 on:
   push:
@@ -63,7 +63,7 @@ jobs:
       run: |        
         docker build -t gcr.io/"$GCLOUD_PROJECT"/"$IMAGE":latest \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" https://github.com/NandosJake/MarsRover.git#test
+          --build-arg GITHUB_REF="$GITHUB_REF" https://github.com/NandosJake/MarsRover.git#development
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
