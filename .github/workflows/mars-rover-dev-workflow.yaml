@@ -3,7 +3,7 @@ name: Test CI-CD GKE workflow
 on:
   push:
     branches:
-    - test
+    - development
 
 # Environment variables available to all jobs and steps in this workflow
 env:
